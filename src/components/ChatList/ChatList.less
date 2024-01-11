@@ -1,0 +1,33 @@
+.chatList {
+  background-color: #fbfbfb;
+
+  height: 96vh;
+  width: 310px;
+  padding: 20px 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    color: var(--text-secondary-color);
+
+    cursor: pointer;
+
+    & span {
+      margin-right: 10px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    height: 100%;
+  }
+}
