@@ -1,3 +1,12 @@
+## _Проект - социальная сеть_
+
+## Используемые технологи
+
+- HTML, CSS, JavaScript
+- Less, PostCss
+- Handlebars
+- Vite
+
 npm run dev - запускает проект на 3000 порту для разработки
 npm run build - собирает проект
 npm run preview - локальный предварительный просмотр сборки
