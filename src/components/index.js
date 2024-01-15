@@ -9,3 +9,4 @@ export { ChatListItem } from "./ChatListItem";
 export { ActiveChat } from "./ActiveChat";
 export { ActiveChatBody } from "./ActiveChatBody";
 export { ActiveChatFooter } from "./ActiveChatFooter";
+export { SimpleForm } from "./SimpleForm";

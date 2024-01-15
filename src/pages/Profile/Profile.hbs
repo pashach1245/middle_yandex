@@ -3,19 +3,21 @@
     <div class="profile__content">
         <div class="profile__content__avatar"></div>
         <span class="profile__content__name">Name</span>
-        {{#each (profileDatas)}}
-        {{> ProfileInput disabled="disabled"}}
-        {{/each}}
-        <div class="profile__content__buttons">
-            <div class="profile__content__buttons__change">
-                {{> Button label="Изменить данные" type="link" page="ProfileEditPage" }}
+        {{#> SimpleForm}}
+            {{#each (profileDatas)}}
+            {{> ProfileInput disabled="disabled"}}
+            {{/each}}
+            <div class="profile__content__buttons">
+                <div class="profile__content__buttons__change">
+                    {{> Button label="Изменить данные" type="link" page="ProfileEditPage" }}
+                </div>
+                <div class="profile__content__buttons__change">
+                    {{> Button label="Изменить пароль" type="link" page="PasswordEditPage" }}
+                </div>
+                <div class="profile__content__buttons__logout">
+                    {{> Button label="Выйти" type="error" page="" }}
+                </div>
             </div>
-            <div class="profile__content__buttons__change">
-                {{> Button label="Изменить пароль" type="link" page="PasswordEditPage" }}
-            </div>
-            <div class="profile__content__buttons__logout">
-                {{> Button label="Выйти" type="error" page="" }}
-            </div>
-        </div>
+        {{/SimpleForm}}
     </div>
 </div>
