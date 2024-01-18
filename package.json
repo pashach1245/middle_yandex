@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "prebuild": "tsc --noEmit",
+    "build": "npm run prebuild && vite build",
     "preview": "vite preview"
   },
   "engines": {
@@ -14,8 +15,14 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "less": "^4.2.0",
+    "nanoid": "^5.0.4",
     "postcss": "^8.4.33",
-    "vite": "^5.0.8"
+    "stylelint": "14.11.0",
+    "stylelint-config-recommended": "9.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
     "handlebars": "^4.7.8"

@@ -1,7 +1,8 @@
 export { MainPage } from "./Main";
 export { AuthPage } from "./Auth";
 export { RegistrationPage } from "./Registration";
-export { ErrorPage } from "./Error";
+export { Error404Page } from "./Error404";
+export { Error500Page } from "./Error500";
 export { ChatPage } from "./Chat";
 export { ProfilePage } from "./Profile";
 export { ProfileEditPage } from "./ProfileEdit";

@@ -1,0 +1,26 @@
+import "./Registration.less";
+import Block from "../../core/Block";
+
+export class RegistrationPage extends Block {
+  constructor() {
+    super();
+  }
+
+  render(): string {
+    return `
+       <div class="registration">
+            {{#> FormAuth title='Регистрация'}}
+                {{{ Input label="Почта" name="email" type="email"}}}
+                {{{ Input label="Логин" name="login" }}}
+                {{{ Input label="Имя" name="first_name" }}}
+                {{{ Input label="Фамилия" name="second_name" }}}
+                {{{ Input label="Телефон" name="phone" type="tel" }}}
+                {{{ Input label="Пароль" name="password" type="password" }}}
+                {{{ Input label="Пароль еще раз" name="password" type="password" inputError="Пароли не совпадают" }}}
+                {{{ Button label="Зарегистрироваться" type="primary" }}}
+                {{{ Button label="Войти" type="link" page="AuthPage" }}}
+            {{/FormAuth}}
+        </div>
+        `;
+  }
+}
