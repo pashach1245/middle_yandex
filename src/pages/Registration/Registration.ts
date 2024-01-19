@@ -2,20 +2,21 @@ import './Registration.less';
 import Block from '../../core/Block';
 import * as validators from '../../utils/validators';
 import { navigate } from '../../main';
+import { Input } from '../../components/Input';
 
 export class RegistrationPage extends Block {
   constructor() {
     super({
       onRegister: (event: Event) => {
         event.preventDefault();
-        const email = this.refs.email.value();
-        const login = this.refs.login.value();
-        const firstName = this.refs.name.value();
-        const secondName = this.refs.second_name.value();
-        const phone = this.refs.phone.value();
+        const email = (this.refs.email as Input).value();
+        const login = (this.refs.login as Input).value();
+        const firstName = (this.refs.name as Input).value();
+        const secondName = (this.refs.second_name as Input).value();
+        const phone = (this.refs.phone as Input).value();
 
-        const password = this.refs.password.value();
-        const passwordAgain = this.refs.passwordAgain.value();
+        const password = (this.refs.password as Input).value();
+        const passwordAgain = (this.refs.passwordAgain as Input).value();
 
         console.log({
           email,

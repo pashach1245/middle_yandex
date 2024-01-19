@@ -2,8 +2,9 @@ import './Auth.less';
 import Block from '../../core/Block';
 import * as validators from '../../utils/validators';
 import { navigate } from '../../main';
+import { Input } from '../../components';
 
-export class AuthPage extends Block<object> {
+export class AuthPage extends Block {
   constructor() {
     super({
       validate: {
@@ -12,8 +13,8 @@ export class AuthPage extends Block<object> {
       },
       onLogin: (event: Event) => {
         event.preventDefault();
-        const login = this.refs.login.value();
-        const password = this.refs.password.value();
+        const login = (this.refs.login as Input).value();
+        const password = (this.refs.password as Input).value();
 
         if (!login) {
           return;

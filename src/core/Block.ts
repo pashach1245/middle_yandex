@@ -77,13 +77,13 @@ class Block {
     Object.values(this.children!).forEach((child) => child.dispatchComponentDidMount());
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
-    if (this.componentDidUpdate(oldProps, newProps)) {
+  private _componentDidUpdate() {
+    if (this.componentDidUpdate()) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate() {
     return true;
   }
 

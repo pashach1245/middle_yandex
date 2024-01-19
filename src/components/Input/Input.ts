@@ -11,7 +11,6 @@ type IProps = {
 
 export class Input extends Block {
   constructor(props: IProps) {
-    console.log(props, 'props');
     super({
       ...props,
       onBlur: () => this.validate(),
@@ -22,11 +21,11 @@ export class Input extends Block {
     if (!this.validate()) {
       return null;
     }
-    return this.refs.input.element.value;
+    return (this.refs.input.element as HTMLInputElement).value;
   }
 
   private validate() {
-    const { value } = this.refs.input.element;
+    const { value } = this.refs.input.element as HTMLInputElement;
     const error = this.props.validate?.(value);
 
     if (error) {
