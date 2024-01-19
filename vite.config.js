@@ -7,11 +7,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     vitePluginChecker({
-      typescript: {
-        tsconfigPath: path.resolve(process.cwd(), 'tsconfig.json'),
-        root: path.resolve(process.cwd(), 'src'),
-      },
-      overlay: false,
+      typescript: true,
     }),
   ],
   server: {
