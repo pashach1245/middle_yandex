@@ -40,6 +40,7 @@ export function navigate(page: string) {
   if (!app) return;
 
   app.innerHTML = '';
+  console.log(page, 'page');
   const Component = pages[page];
   const component = new Component();
   app?.append(component.getContent()!);
