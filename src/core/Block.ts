@@ -2,22 +2,12 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
-export type RefType = {
-  [key: string]: Element | Block<object>;
-};
-
-export interface BlockClass<P extends object, R extends RefType>
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  extends Function {
-  new (props: P): Block<P, R>;
-  componentName?: string;
-}
 interface BlockProps {
   events?: Record<string, (event: Event) => void>;
   [key: string]: any;
 }
 
-class Block<Props extends object, Refs extends RefType = RefType> {
+class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -28,17 +18,17 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   public id = nanoid(6);
 
-  protected props: Props;
+  protected props: BlockProps;
 
-  protected refs: Refs = {} as Refs;
+  protected refs: Record<string, Block> = {};
 
-  private children: Block<object>[] = [];
+  private children: Record<string, Block> | undefined;
 
   private eventBus: () => EventBus;
 
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props: Record<string, any> = {}) {
     const eventBus = new EventBus();
 
     this.props = this._makePropsProxy(props);
@@ -84,7 +74,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children!).forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -147,7 +137,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   private compile(template: string, context: any) {
     const contextAndStubs = { ...context, __refs: this.refs };
 
-    Object.entries(this.children).forEach(([key, child]) => {
+    Object.entries(this.children!).forEach(([key, child]) => {
       contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
     });
 
@@ -160,7 +150,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
       embed(temp.content);
     });
 
-    Object.values(this.children).forEach((child) => {
+    Object.values(this.children!).forEach((child) => {
       const stub = temp.content.querySelector(`[data-id="${child.id}"]`);
       stub?.replaceWith(child.getContent()!);
     });
