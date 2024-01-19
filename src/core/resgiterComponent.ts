@@ -36,6 +36,6 @@ export function registerComponent(name: string, Component: typeof Block) {
       const contents = fn ? fn(this) : '';
 
       return `<div ${dataAttribute}>${contents}</div>`;
-    }
+    },
   );
 }
