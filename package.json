@@ -18,6 +18,7 @@
     "less": "^4.2.0",
     "nanoid": "^5.0.4",
     "postcss": "^8.4.33",
+    "postcss-less": "^6.0.0",
     "stylelint": "^14.11.0",
     "stylelint-config-recommended": "9.0.0",
     "typescript": "^5.3.3",
