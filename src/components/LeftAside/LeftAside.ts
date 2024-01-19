@@ -1,9 +1,12 @@
 import './LeftAside.less';
 import Block from '../../core/Block';
 
+type IProps = {
+  page: string;
+};
 export class LeftAside extends Block {
-  constructor() {
-    super();
+  constructor(props: IProps) {
+    super(props);
   }
 
   render(): string {
