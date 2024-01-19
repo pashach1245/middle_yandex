@@ -1,7 +1,7 @@
-import "./ActiveChat.less";
-import Block from "../../core/Block";
+import './ActiveChat.less';
+import Block from '../../core/Block';
 
-export class ActiveChat extends Block<{}> {
+export class ActiveChat extends Block<object> {
   constructor() {
     super();
   }

@@ -1,5 +1,5 @@
-import "./ProfileInput.less";
-import Block from "../../core/Block";
+import './ProfileInput.less';
+import Block from '../../core/Block';
 
 type IProps = {
   disabled: any;

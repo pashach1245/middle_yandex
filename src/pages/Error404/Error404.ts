@@ -1,5 +1,5 @@
-import "./Error404.less";
-import Block from "../../core/Block";
+import './Error404.less';
+import Block from '../../core/Block';
 
 export class Error404Page extends Block {
   constructor() {

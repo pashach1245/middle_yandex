@@ -1,8 +1,8 @@
-import Block from "../../core/Block";
-import "./Button.less";
+import Block from '../../core/Block';
+import './Button.less';
 
 interface IProps {
-  type: "primary" | "link" | "error";
+  type: 'primary' | 'link' | 'error';
   label: string;
   page: string;
   onClick?: () => void;

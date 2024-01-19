@@ -1,5 +1,5 @@
-import "./Chat.less";
-import Block from "../../core/Block";
+import './Chat.less';
+import Block from '../../core/Block';
 
 export class ChatPage extends Block {
   constructor() {

@@ -1,9 +1,9 @@
-import "./Auth.less";
-import Block from "../../core/Block";
-import * as validators from "../../utils/validators";
-import { navigate } from "../../main";
+import './Auth.less';
+import Block from '../../core/Block';
+import * as validators from '../../utils/validators';
+import { navigate } from '../../main';
 
-export class AuthPage extends Block<{}> {
+export class AuthPage extends Block<object> {
   constructor() {
     super({
       validate: {
@@ -23,7 +23,7 @@ export class AuthPage extends Block<{}> {
           login,
           password,
         });
-        navigate("ProfilePage");
+        navigate('ProfilePage');
       },
     });
   }

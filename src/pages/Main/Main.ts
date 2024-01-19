@@ -1,5 +1,5 @@
-import "./Main.less";
-import Block from "../../core/Block";
+import './Main.less';
+import Block from '../../core/Block';
 
 export class MainPage extends Block {
   constructor() {

@@ -1,8 +1,8 @@
-import Block from "../../core/Block";
-import "./ChatMessage.less";
+import Block from '../../core/Block';
+import './ChatMessage.less';
 
 type IProps = {
-  type: "outgoing" | "incoming";
+  type: 'outgoing' | 'incoming';
   message: string;
   time: string;
   isOutgoing: boolean;

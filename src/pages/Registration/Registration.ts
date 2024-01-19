@@ -1,7 +1,7 @@
-import "./Registration.less";
-import Block from "../../core/Block";
-import * as validators from "../../utils/validators";
-import { navigate } from "../../main";
+import './Registration.less';
+import Block from '../../core/Block';
+import * as validators from '../../utils/validators';
+import { navigate } from '../../main';
 
 export class RegistrationPage extends Block {
   constructor() {
@@ -27,7 +27,7 @@ export class RegistrationPage extends Block {
           password_again: passwordAgain,
         });
 
-        navigate("ProfilePage");
+        navigate('ProfilePage');
       },
       validate: {
         login: validators.login,

@@ -1,1 +1,1 @@
-export { ProfileEditPage } from "./ProfileEdit";
+export { ProfileEditPage } from './ProfileEdit';

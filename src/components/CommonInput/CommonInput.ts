@@ -1,4 +1,4 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 interface IProps {
   name: string;
@@ -11,7 +11,7 @@ interface IProps {
 
 export class CommonInput extends Block {
   constructor(props: IProps) {
-    console.log(props, "props");
+    console.log(props, 'props');
     super({
       ...props,
       events: {
@@ -23,9 +23,9 @@ export class CommonInput extends Block {
   protected render(): string {
     const { disabled, value } = this.props;
     return `
-            <input class={{classname}} ${disabled ? "disabled" : ""} ${
-      value ? `value=${value}` : ""
-    } name={{name}} type={{type}}" ref="input" />
+            <input class={{classname}} ${disabled ? 'disabled' : ''} ${
+  value ? `value=${value}` : ''
+} name={{name}} type={{type}}" ref="input" />
         `;
   }
 }

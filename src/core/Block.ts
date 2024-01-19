@@ -1,12 +1,13 @@
-import EventBus from "./EventBus";
-import { nanoid } from "nanoid";
-import Handlebars from "handlebars";
+import { nanoid } from 'nanoid';
+import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 export type RefType = {
   [key: string]: Element | Block<object>;
 };
 
 export interface BlockClass<P extends object, R extends RefType>
+  // eslint-disable-next-line @typescript-eslint/ban-types
   extends Function {
   new (props: P): Block<P, R>;
   componentName?: string;
@@ -18,18 +19,23 @@ interface BlockProps {
 
 class Block<Props extends object, Refs extends RefType = RefType> {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_CWU: "flow:component-will-unmount",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_CWU: 'flow:component-will-unmount',
+    FLOW_RENDER: 'flow:render',
   };
 
   public id = nanoid(6);
+
   protected props: Props;
+
   protected refs: Refs = {} as Refs;
+
   private children: Block<object>[] = [];
+
   private eventBus: () => EventBus;
+
   private _element: HTMLElement | null = null;
 
   constructor(props: Props = {} as Props) {
@@ -45,7 +51,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   _addEvents() {
-    const { events = {} } = this.props;
+    const { events = {} } = this.props as any;
 
     Object.keys(events).forEach((eventName) => {
       this._element!.addEventListener(eventName, events[eventName]);
@@ -78,9 +84,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) =>
-      child.dispatchComponentDidMount()
-    );
+    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -149,7 +153,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
-    const temp = document.createElement("template");
+    const temp = document.createElement('template');
 
     temp.innerHTML = html;
     contextAndStubs.__children?.forEach(({ embed }: any) => {
@@ -165,7 +169,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   protected render(): string {
-    return "";
+    return '';
   }
 
   getContent() {
@@ -190,7 +194,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
@@ -203,17 +207,17 @@ class Block<Props extends object, Refs extends RefType = RefType> {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
+        throw new Error('Нет доступа');
       },
     });
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = 'block';
   }
 
   hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 }
 

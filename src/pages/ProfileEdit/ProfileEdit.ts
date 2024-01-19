@@ -1,5 +1,5 @@
-import "./ProfileEdit.less";
-import Block from "../../core/Block";
+import './ProfileEdit.less';
+import Block from '../../core/Block';
 
 export class ProfileEditPage extends Block {
   constructor() {

@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "lint": "eslint src --ext .ts,.tsx,.js",
+    "lint:fix": "npm run lint -- --fix",
     "start": "vite",
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build",

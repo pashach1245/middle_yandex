@@ -1,5 +1,5 @@
-import "./Input.less";
-import Block from "../../core/Block";
+import './Input.less';
+import Block from '../../core/Block';
 
 type IProps = {
   name: string;
@@ -11,7 +11,7 @@ type IProps = {
 
 export class Input extends Block {
   constructor(props: IProps) {
-    console.log(props, "props");
+    console.log(props, 'props');
     super({
       ...props,
       onBlur: () => this.validate(),
@@ -26,7 +26,7 @@ export class Input extends Block {
   }
 
   private validate() {
-    const value = this.refs.input.element.value;
+    const { value } = this.refs.input.element;
     const error = this.props.validate?.(value);
 
     if (error) {
@@ -34,7 +34,7 @@ export class Input extends Block {
       return false;
     }
 
-    this.refs.errorLine.setProps({ inputError: "" });
+    this.refs.errorLine.setProps({ inputError: '' });
     return true;
   }
 

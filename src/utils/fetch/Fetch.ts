@@ -1,8 +1,8 @@
 const METHODS = {
-  GET: "GET",
-  PUT: "PUT",
-  POST: "POST",
-  DELETE: "DELETE",
+  GET: 'GET',
+  PUT: 'PUT',
+  POST: 'POST',
+  DELETE: 'DELETE',
 } as const;
 
 type DataType = {
@@ -17,47 +17,20 @@ type OptionsType = {
 };
 
 function queryStringify(data: DataType) {
-  if (Object.keys(data).length === 0) return "";
-  return (
-    "?" +
-    Object.keys(data)
-      .map((key) => key + "=" + data[key])
-      .join("&")
-  );
+  if (Object.keys(data).length === 0) return '';
+  return `?${Object.keys(data)
+    .map((key) => `${key}=${data[key]}`)
+    .join('&')}`;
 }
 
 class HTTPTransport {
-  get = (url: string, options: OptionsType = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.GET },
-      options.timeout
-    );
-  };
+  get = (url: string, options: OptionsType = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
 
-  post = (url: string, options: OptionsType = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.POST },
-      options.timeout
-    );
-  };
+  post = (url: string, options: OptionsType = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-  put = (url: string, options: OptionsType = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.PUT },
-      options.timeout
-    );
-  };
+  put = (url: string, options: OptionsType = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-  delete = (url: string, options: OptionsType = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.DELETE },
-      options.timeout
-    );
-  };
+  delete = (url: string, options: OptionsType = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url: string, options: OptionsType = {}, timeout = 5000) => {
     const { method, data, headers } = options;
@@ -66,14 +39,13 @@ class HTTPTransport {
       const xhr = new XMLHttpRequest();
       const newUrl = method === METHODS.GET ? url + queryStringify(data!) : url;
       xhr.open(method!, newUrl);
-      console.log(headers, "headers");
-      headers
-        ? Object.entries(headers).forEach(([key, value]) => {
-            xhr.setRequestHeader(key, value);
-          })
-        : "";
+      if (headers) {
+        Object.entries(headers).forEach(([key, value]) => {
+          xhr.setRequestHeader(key, value);
+        });
+      }
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 

@@ -1,5 +1,5 @@
-import "./ActiveChatFooter.less";
-import Block from "../../core/Block";
+import './ActiveChatFooter.less';
+import Block from '../../core/Block';
 
 export class ActiveChatFooter extends Block {
   constructor() {

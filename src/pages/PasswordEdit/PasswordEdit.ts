@@ -1,26 +1,25 @@
-import "./PasswordEdit.less";
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 export class PasswordEditPage extends Block {
   constructor() {
     const editPasswordData = [
       {
-        label: "Старый пароль",
-        value: "123",
-        type: "password",
-        name: "oldPassword",
+        label: 'Старый пароль',
+        value: '123',
+        type: 'password',
+        name: 'oldPassword',
       },
       {
-        label: "Новый пароль",
-        value: "123456",
-        name: "newPassword",
-        type: "password",
+        label: 'Новый пароль',
+        value: '123456',
+        name: 'newPassword',
+        type: 'password',
       },
       {
-        label: "Повторите новый пароль",
-        value: "123456",
-        name: "newPassword",
-        type: "password",
+        label: 'Повторите новый пароль',
+        value: '123456',
+        name: 'newPassword',
+        type: 'password',
       },
     ];
     super({ editPasswordData });

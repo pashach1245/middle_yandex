@@ -1,5 +1,5 @@
-import "./LeftAside.less";
-import Block from "../../core/Block";
+import './LeftAside.less';
+import Block from '../../core/Block';
 
 export class LeftAside extends Block {
   constructor(props) {
