@@ -5,6 +5,7 @@ type IProps = {
   type: "outgoing" | "incoming";
   message: string;
   time: string;
+  isOutgoing: boolean;
   isFileAttached: boolean;
 };
 
@@ -19,12 +20,12 @@ export class ChatMessage extends Block {
                 <div class="message__{{type}}__text">
                     <span>{{message}}</span>
                 </div>
-                 {{#if (true isFileAttached)}}
-                     <img class="message__photo" src="assets/messagePhoto.jpg" alt="message-photo" />
-                {{/if}}
+                  {{#if isFileAttached}}
+                    <img class="message__photo" src="assets/messagePhoto.jpg" alt="message-photo" />
+                 {{/if}}
                 <div class="message__info">
                     <span class="message__info__time">{{time}}</span>
-                    {{#if (outgoing type)}}
+                      {{#if isOutgoing}}
                         <svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="Group 198">
                             <line id="Line 5" y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" stroke="#3369F3"/>

@@ -2,8 +2,8 @@ import "./LeftAside.less";
 import Block from "../../core/Block";
 
 export class LeftAside extends Block {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render(): string {

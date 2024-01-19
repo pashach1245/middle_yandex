@@ -11,3 +11,5 @@ export { ActiveChatBody } from "./ActiveChatBody";
 export { ActiveChatFooter } from "./ActiveChatFooter";
 export { SimpleForm } from "./SimpleForm";
 export { ChatMessage } from "./ChatMessage";
+export { CommonInput } from "./CommonInput";
+export { ErrorLine } from "./ErrorLine";

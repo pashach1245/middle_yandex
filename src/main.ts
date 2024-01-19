@@ -29,8 +29,10 @@ registerComponent("ActiveChat", Components.ActiveChat);
 registerComponent("ActiveChatBody", Components.ActiveChatBody);
 registerComponent("ActiveChatFooter", Components.ActiveChatFooter);
 registerComponent("ChatMessage", Components.ChatMessage);
+registerComponent("CommonInput", Components.CommonInput);
+registerComponent("ErrorLine", Components.ErrorLine);
 
-function navigate(page: string) {
+export function navigate(page: string) {
   const app = document.getElementById("app");
   if (!app) return;
 

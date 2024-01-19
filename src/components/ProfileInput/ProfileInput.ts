@@ -2,7 +2,7 @@ import "./ProfileInput.less";
 import Block from "../../core/Block";
 
 type IProps = {
-  disabled: string;
+  disabled: any;
   label: string;
   name: string;
   type: string;
@@ -18,13 +18,7 @@ export class ProfileInput extends Block {
     return `
     <div class="profileInput">
         <div>{{label}}</div>
-        <input
-            class="profileInput__value"
-            type={{type}}
-            value={{value}}
-            name={{name}}
-            {{disabled}}
-        />
+        {{{CommonInput name=name type=type ref="input" classname="profileInput__value" disabled=disabled value=value }}}
     </div>
         `;
   }

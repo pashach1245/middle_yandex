@@ -9,8 +9,8 @@ export class ChatPage extends Block {
   render(): string {
     return `
     <div class="chat">
-        {{{ ChatList}}}
-        {{{ ActiveChat}}}
+        {{{ ChatList }}}
+        {{{ ActiveChat }}}
     </div>`;
   }
 }

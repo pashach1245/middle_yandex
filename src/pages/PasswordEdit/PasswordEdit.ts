@@ -33,9 +33,9 @@ export class PasswordEditPage extends Block {
         <div class="profile__content">
             <img class="profile__content__avatar" src="https://fakeimg.pl/130x130" alt="Avatar" />
             {{#> SimpleForm}}
-                {{#each editPasswordData}}
-                {{{ ProfileInput label=this.label type=this.type value=this.value name=this.name disabled=false}}}
-                {{/each}}
+                {{{ ProfileInput label="Старый пароль" type="password" value="123" name="oldPassword" }}}
+                {{{ ProfileInput label="Новый пароль" type="password" value="123456" name="newPassword" }}}
+                {{{ ProfileInput label="Повторите новый пароль" type="password" value="123456" name="newPassword" }}}
                 <div class="profileEdit__button">
                     {{{ Button type="primary" label="Сохранить" page="ProfilePage"}}}
                 </div>
