@@ -11,7 +11,6 @@ interface IProps {
 
 export class CommonInput extends Block {
   constructor(props: IProps) {
-    console.log(props, 'props');
     super({
       ...props,
       events: {

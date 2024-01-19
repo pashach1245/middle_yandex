@@ -74,7 +74,9 @@ class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children!).forEach((child) => child.dispatchComponentDidMount());
+    if (this.children) {
+      Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    }
   }
 
   private _componentDidUpdate() {
@@ -137,9 +139,11 @@ class Block {
   private compile(template: string, context: any) {
     const contextAndStubs = { ...context, __refs: this.refs };
 
-    Object.entries(this.children!).forEach(([key, child]) => {
-      contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
-    });
+    if (this.children) {
+      Object.entries(this.children).forEach(([key, child]) => {
+        contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
+      });
+    }
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
@@ -149,11 +153,12 @@ class Block {
     contextAndStubs.__children?.forEach(({ embed }: any) => {
       embed(temp.content);
     });
-
-    Object.values(this.children!).forEach((child) => {
-      const stub = temp.content.querySelector(`[data-id="${child.id}"]`);
-      stub?.replaceWith(child.getContent()!);
-    });
+    if (this.children) {
+      Object.values(this.children).forEach((child) => {
+        const stub = temp.content.querySelector(`[data-id="${child.id}"]`);
+        stub?.replaceWith(child.getContent()!);
+      });
+    }
 
     return temp.content;
   }
