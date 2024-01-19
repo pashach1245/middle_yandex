@@ -9,7 +9,7 @@ export function registerComponent(name: string, Component: typeof Block) {
 
   Handlebars.registerHelper(
     name,
-    function (this: unknown, { hash, data, fn }: HelperOptions) {
+    function register(this: unknown, { hash, data, fn }: HelperOptions) {
       const component = new Component(hash);
 
       const dataAttribute = `data-id="${component.id}"`;
@@ -36,6 +36,6 @@ export function registerComponent(name: string, Component: typeof Block) {
       const contents = fn ? fn(this) : '';
 
       return `<div ${dataAttribute}>${contents}</div>`;
-    },
+    }
   );
 }
