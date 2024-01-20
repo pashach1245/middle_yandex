@@ -110,7 +110,7 @@ class Block {
 
   componentWillUnmount() {}
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: BlockProps) => {
     if (!nextProps) {
       return;
     }
@@ -124,8 +124,9 @@ class Block {
 
   private _render() {
     const fragment = this.compile(this.render(), this.props);
-
     const newElement = fragment.firstElementChild as HTMLElement;
+
+    this._removeEvents();
 
     if (this._element) {
       this._element.replaceWith(newElement);
@@ -134,6 +135,14 @@ class Block {
     this._element = newElement;
 
     this._addEvents();
+  }
+
+  _removeEvents() {
+    const { events = {} } = this.props;
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
   }
 
   private compile(template: string, context: any) {
@@ -182,16 +191,16 @@ class Block {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: BlockProps) {
     // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: any) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target, prop: any, value) {
         const oldTarget = { ...target };
 
         target[prop] = value;
