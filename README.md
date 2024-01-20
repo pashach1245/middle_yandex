@@ -6,6 +6,7 @@
 - Less, PostCss
 - Handlebars
 - Vite
+- TypeScript
 
 -npm run start - запускает проект на 3000 порту для разработки
 -npm run build - собирает проект

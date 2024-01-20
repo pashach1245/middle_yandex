@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
 
+  position: relative;
+
   border-bottom: 1px solid var(--text-secondary-color);
 
   padding: 10px 0;
@@ -14,5 +16,11 @@
     text-align: end;
     border: none;
     background-color: transparent;
+  }
+
+  &__input__error {
+    position: absolute;
+    right: 0;
+    bottom: -25px;
   }
 }

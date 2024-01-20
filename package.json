@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "lint": "eslint src --ext .ts,.tsx,.js",
+    "lint:fix": "npm run lint -- --fix",
     "start": "vite",
-    "build": "vite build",
+    "prebuild": "tsc --noEmit",
+    "build": "npm run prebuild && vite build",
     "preview": "vite preview"
   },
   "engines": {
@@ -13,9 +16,20 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "less": "^4.2.0",
+    "nanoid": "^5.0.4",
     "postcss": "^8.4.33",
-    "vite": "^5.0.8"
+    "postcss-less": "^6.0.0",
+    "stylelint": "^14.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "stylelint-config-recommended": "9.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
     "handlebars": "^4.7.8"
